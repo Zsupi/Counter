@@ -1,15 +1,25 @@
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
+<script lang="ts">
 
-<div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-5">
-		<h1 class="h1">Let's get cracking bones!</h1>
-		<p>Start by exploring:</p>
-		<ul>
-			<li><code class="code">/src/routes/+layout.svelte</code> - barebones layout</li>
-			<li><code class="code">/src/app.postcss</code> - app wide css</li>
-			<li>
-				<code class="code">/src/routes/+page.svelte</code> - this page, you can replace the contents
-			</li>
-		</ul>
-	</div>
-</div>
+  import { Avatar } from "@skeletonlabs/skeleton";
+  import avatar from "../assets/avatar.png";
+  import Request from "$lib/Request.svelte";
+  import Thanks from "$lib/Thanks.svelte";
+
+  const requestDate = new Date('2024/04/05');
+  const today = new Date();
+
+  const done = false
+
+  function calculateDaysBetween(date1: Date, date2: Date) {
+    const oneDay = 1000 * 60 * 60 * 24;
+	const diffInTime = Math.abs(date2.getTime() - date1.getTime());
+    return Math.ceil(diffInTime / oneDay);
+  }
+
+</script>
+
+{#if done}
+	<Thanks/>
+{:else}
+	<Request/>
+{/if}
